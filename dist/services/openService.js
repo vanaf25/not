@@ -37,7 +37,7 @@ class OpenService {
         const notification = await jobSchema_1.NotificationModel.findOne({ ip });
         if (notification)
             throw api_error_middleware_1.default.NotFound("You can't get a notifications");
-        const data = await fd.readFile('services/url.txt', "utf8");
+        const data = await fd.readFile('dist/services/url.txt', "utf8");
         const [link, date2] = data.split(";");
         console.log(link, date2);
         if (date2 === date) {
