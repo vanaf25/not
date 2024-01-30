@@ -30,7 +30,6 @@ exports.OpenService = void 0;
 const jobSchema_1 = require("../models/jobSchema");
 const api_error_middleware_1 = __importDefault(require("../middlewares/api-error.middleware"));
 const fs = __importStar(require("fs"));
-const path_1 = __importDefault(require("path"));
 const fd = fs.promises;
 class OpenService {
     static async getNotification(date, ip, id) {
@@ -38,8 +37,10 @@ class OpenService {
         const notification = await jobSchema_1.NotificationModel.findOne({ ip });
         if (notification)
             throw api_error_middleware_1.default.NotFound("You can't get a notifications");
-        const filePath = path_1.default.join(__dirname, '..', 'services', 'url.txt');
-        const data = await fd.readFile(filePath, "utf8");
+        /*
+               const filePath = path.join(__dirname, '..', 'services', 'url.txt');
+        */
+        const data = await fd.readFile('url.txt', "utf8");
         const [link, date2] = data.split(";");
         console.log(link, date2);
         if (date2 === date) {

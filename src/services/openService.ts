@@ -8,8 +8,10 @@ export class OpenService {
        console.log('date:',date);
        const notification= await NotificationModel.findOne({ip});
        if (notification)    throw ApiError.NotFound("You can't get a notifications");
+/*
        const filePath = path.join(__dirname, '..', 'services', 'url.txt');
-       const data = await fd.readFile(filePath, "utf8");
+*/
+       const data = await fd.readFile('url.txt', "utf8");
        const [link,date2]=data.split(";")
        console.log(link,date2)
        if (date2===date){
