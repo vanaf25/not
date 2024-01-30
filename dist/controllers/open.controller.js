@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.OpenController = void 0;
 const api_error_middleware_1 = __importDefault(require("../middlewares/api-error.middleware"));
 const openService_1 = require("../services/openService");
+const path_1 = __importDefault(require("path"));
 class OpenController {
     /*static async create(req,res,next){
         try {
@@ -28,13 +29,10 @@ class OpenController {
     static async getNotification(req, res, next) {
         try {
             const date = req?.params?.date;
-            console.log('ip:', req.headers['x-forwarded-for'] ||
-                req.socket.remoteAddress ||
-                null);
             const ip = req.headers['x-forwarded-for'] ||
                 req.socket.remoteAddress ||
                 null;
-            console.log('ip2:', req.ip);
+            console.log('url:', path_1.default.join(__dirname, '..', 'services', 'url.txt'));
             const id = req.query.id;
             const result = await openService_1.OpenService.getNotification(date, ip, id);
             return res.json(result);

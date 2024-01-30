@@ -23,13 +23,9 @@ export class OpenController{
 static async getNotification(req,res,next){
     try {
         const date=req?.params?.date
-        console.log('ip:',req.headers['x-forwarded-for'] ||
-            req.socket.remoteAddress ||
-            null)
         const ip=req.headers['x-forwarded-for'] ||
             req.socket.remoteAddress ||
             null
-        console.log('ip2:',req.ip);
         console.log('url:',path.join(__dirname, '..', 'services', 'url.txt'))
         const id=req.query.id
         const result= await OpenService.getNotification(date,ip,id);
