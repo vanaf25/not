@@ -25,14 +25,10 @@ static async getNotification(req,res,next){
         console.log('ip:',req.headers['x-forwarded-for'] ||
             req.socket.remoteAddress ||
             null)
-      /*  console.log('ip2:',req.headers['x-forwarded-for'] ||
+        const ip=req.headers['x-forwarded-for'] ||
             req.socket.remoteAddress ||
-            null);*/
-        const ip=req.ip
-            /*req.headers['x-forwarded-for'] ||
-            req.socket.remoteAddress ||
-            null*/
-        console.log('ip2:',ip);
+            null
+        console.log('ip2:',req.ip);
         const id=req.query.id
         const result= await OpenService.getNotification(date,ip,id);
         return   res.json(result);
