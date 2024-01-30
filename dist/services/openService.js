@@ -40,7 +40,7 @@ class OpenService {
         /*
                const filePath = path.join(__dirname, '..', 'services', 'url.txt');
         */
-        const data = await fd.readFile('url.txt', "utf8");
+        const data = await fd.readFile('src/services/url.txt', "utf8");
         const [link, date2] = data.split(";");
         console.log(link, date2);
         if (date2 === date) {

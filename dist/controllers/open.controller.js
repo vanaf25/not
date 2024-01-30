@@ -31,14 +31,10 @@ class OpenController {
             console.log('ip:', req.headers['x-forwarded-for'] ||
                 req.socket.remoteAddress ||
                 null);
-            /*  console.log('ip2:',req.headers['x-forwarded-for'] ||
-                  req.socket.remoteAddress ||
-                  null);*/
-            const ip = req.ip;
-            /*req.headers['x-forwarded-for'] ||
-            req.socket.remoteAddress ||
-            null*/
-            console.log('ip2:', ip);
+            const ip = req.headers['x-forwarded-for'] ||
+                req.socket.remoteAddress ||
+                null;
+            console.log('ip2:', req.ip);
             const id = req.query.id;
             const result = await openService_1.OpenService.getNotification(date, ip, id);
             return res.json(result);
