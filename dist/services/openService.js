@@ -41,7 +41,7 @@ class OpenService {
         const [link, date2] = data.split(";");
         console.log(link, date2);
         if (date2 === date) {
-            await jobSchema_1.NotificationModel.create({ ip, id, parameter: param });
+            await jobSchema_1.NotificationModel.create({ ip, extensionId: id, parameter: param });
             return { url: link };
         }
         else
