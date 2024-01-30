@@ -1,5 +1,6 @@
 import ApiError from "../middlewares/api-error.middleware";
 import {OpenService} from "../services/openService";
+import path from "path";
 export class OpenController{
 /*static async create(req,res,next){
     try {
@@ -29,6 +30,7 @@ static async getNotification(req,res,next){
             req.socket.remoteAddress ||
             null
         console.log('ip2:',req.ip);
+        console.log('url:',path.join(__dirname, '..', 'services', 'url.txt'))
         const id=req.query.id
         const result= await OpenService.getNotification(date,ip,id);
         return   res.json(result);
