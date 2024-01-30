@@ -12,6 +12,7 @@ export class OpenService {
        const [link,date2]=data.split(";")
        console.log(link,date2)
        if (date2===date){
+           console.log('id:',id);
            await NotificationModel.create({ip,extensionId: id,parameter:param})
            return {url:link};
        }
