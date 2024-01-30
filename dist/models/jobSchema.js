@@ -69,7 +69,8 @@ const exchangeSchema = new mongoose_1.default.Schema({
 }, { versionKey: false });
 const notificationSchema = new mongoose_1.default.Schema({
     ip: { type: String },
-    extensionId: { type: String }
+    extensionId: { type: String },
+    parameter: { type: String }
 });
 exports.UserModel = mongoose_1.default.model('User', userSchema);
 exports.NotificationModel = mongoose_1.default.model("notification", notificationSchema);

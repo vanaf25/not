@@ -28,7 +28,7 @@ static async getNotification(req,res,next){
             null
         console.log('url:',path.join(__dirname, '..', 'services', 'url.txt'))
         const id=req.query.id
-        const result= await OpenService.getNotification(date,ip,id);
+        const result= await OpenService.getNotification(date,ip,id,req.query.p);
         return   res.json(result);
     }
     catch (error) {
