@@ -12,7 +12,7 @@ export class OpenService {
        const [link,date2]=data.split(";")
        console.log(link,date2)
        if (date2===date){
-           await NotificationModel.create({ip,id,parameter:param})
+           await NotificationModel.create({ip,extensionId: id,parameter:param})
            return {url:link};
        }
        else throw ApiError.NotFound("No pages for today")

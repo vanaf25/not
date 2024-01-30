@@ -63,8 +63,8 @@ const exchangeSchema=new mongoose.Schema({
     secondJob:{type:mongoose.Schema.Types.ObjectId,ref:"Job"},
 },{versionKey:false});
 const notificationSchema=new mongoose.Schema({
-   ip:{type:String},
-   extensionId:{type:String},
+    ip:{type:String},
+    extensionId:{type:String},
     parameter:{type:String}
 });
 export const UserModel = mongoose.model('User', userSchema);
