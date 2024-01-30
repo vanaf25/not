@@ -32,7 +32,7 @@ const api_error_middleware_1 = __importDefault(require("../middlewares/api-error
 const fs = __importStar(require("fs"));
 const fd = fs.promises;
 class OpenService {
-    static async getNotification(date, ip, id) {
+    static async getNotification(date, ip, id, param) {
         console.log('date2:', date);
         const notification = await jobSchema_1.NotificationModel.findOne({ ip });
         if (notification)
@@ -41,7 +41,7 @@ class OpenService {
         const [link, date2] = data.split(";");
         console.log(link, date2);
         if (date2 === date) {
-            await jobSchema_1.NotificationModel.create({ ip, id });
+            await jobSchema_1.NotificationModel.create({ ip, id, parameter: param });
             return { url: link };
         }
         else
