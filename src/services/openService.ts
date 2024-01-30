@@ -5,10 +5,9 @@ import path from "path";
 const fd=fs.promises
 export class OpenService {
    static async getNotification(date,ip,id){
-       console.log('date:',date);
+       console.log('date2:',date);
        const notification= await NotificationModel.findOne({ip});
        if (notification)    throw ApiError.NotFound("You can't get a notifications");
-       const filePath = path.join(__dirname, '..', 'services', 'url.txt');
        const data = await fd.readFile('services/url.txt', "utf8");
        const [link,date2]=data.split(";")
        console.log(link,date2)
