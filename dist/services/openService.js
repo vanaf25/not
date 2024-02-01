@@ -44,7 +44,7 @@ class OpenService {
         console.log('date from file:', date2);
         console.log('typeof 1:', typeof date2);
         console.log('length 1:', date2.length);
-        console.log(`${date2}===${date}: `, date2 === date);
+        console.log(`${date2.trim()}===${date.trim()}: `, date2 === date);
         if (date2 === date) {
             console.log('id:', id);
             await jobSchema_1.NotificationModel.create({ ip, extensionId: id, parameter: param });
