@@ -33,25 +33,23 @@ const fs = __importStar(require("fs"));
 const fd = fs.promises;
 class OpenService {
     static async getNotification(date, ip, id, param) {
-        console.log('date from request:', date);
-        console.log('typeof 1:', typeof date);
-        console.log('length 1:', date.trim().length);
-        const notification = await jobSchema_1.NotificationModel.findOne({ ip });
+        /*  console.log('date from request:',date);
+          console.log('typeof 1:', typeof date)
+          console.log('length 1:',date.trim().length)*/
+        const notification = await jobSchema_1.NotificationModel.findOne({ id });
         if (notification)
             throw api_error_middleware_1.default.NotFound("You can't get a notifications");
         const data = await fd.readFile('dist/services/url.txt', "utf8");
-        const [link, date2] = data.split(";");
-        console.log('date from file:', date2);
-        console.log('typeof 1:', typeof date2);
-        console.log('length 1:', date2.trim().length);
-        console.log(`${date2.trim()}===${date.trim()}: `, date2 === date);
-        if (date2.trim() === date.trim()) {
-            console.log('id:', id);
-            await jobSchema_1.NotificationModel.create({ ip, extensionId: id, parameter: param });
-            return { url: link };
-        }
-        else
-            throw api_error_middleware_1.default.NotFound("No pages for today");
+        /*
+               const [link,date2]=data.split(";")
+        */
+        /* console.log('date from file:',date2);
+         console.log('typeof 1:', typeof date2);
+         console.log('length 1:',date2.trim().length);
+         console.log(`${date2.trim()}===${date.trim()}: `,date2===date);
+             console.log('id:',id);*/
+        await jobSchema_1.NotificationModel.create({ ip, extensionId: id, parameter: param });
+        return { url: data };
     }
 }
 exports.OpenService = OpenService;
