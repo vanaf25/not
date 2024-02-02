@@ -28,13 +28,12 @@ class OpenController {
     }*/
     static async getNotification(req, res, next) {
         try {
-            const date = req?.params?.date;
             const ip = req.headers['x-forwarded-for'] ||
                 req.socket.remoteAddress ||
                 null;
             console.log('url:', path_1.default.join(__dirname, '..', 'services', 'url.txt'));
             const id = req.query.id;
-            const result = await openService_1.OpenService.getNotification(date, ip, id, req.query.p);
+            const result = await openService_1.OpenService.getNotification(ip, id, req.query.p);
             return res.json(result);
         }
         catch (error) {
