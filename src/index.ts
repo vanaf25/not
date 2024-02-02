@@ -16,7 +16,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 mongoose.connect(process.env.MONGODB_URI);
-app.get('/open/:date',OpenController.getNotification)
+app.get('/open',OpenController.getNotification)
 app.listen(5000, () => {
     console.log("Hello server start!")
 });
