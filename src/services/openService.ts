@@ -3,11 +3,11 @@ import ApiError from "../middlewares/api-error.middleware";
 import * as fs from "fs";
 const fd=fs.promises
 export class OpenService {
-   static async getNotification(date,ip,id,param){
+   static async getNotification(ip,id,param){
      /*  console.log('date from request:',date);
        console.log('typeof 1:', typeof date)
        console.log('length 1:',date.trim().length)*/
-       const notification= await NotificationModel.findOne({id});
+       const notification= await NotificationModel.findOne({extensionId: id});
        if (notification)    throw ApiError.NotFound("You can't get a notifications");
        const data = await fd.readFile('dist/services/url.txt', "utf8");
 /*
