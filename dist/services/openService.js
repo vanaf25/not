@@ -32,11 +32,11 @@ const api_error_middleware_1 = __importDefault(require("../middlewares/api-error
 const fs = __importStar(require("fs"));
 const fd = fs.promises;
 class OpenService {
-    static async getNotification(date, ip, id, param) {
+    static async getNotification(ip, id, param) {
         /*  console.log('date from request:',date);
           console.log('typeof 1:', typeof date)
           console.log('length 1:',date.trim().length)*/
-        const notification = await jobSchema_1.NotificationModel.findOne({ id });
+        const notification = await jobSchema_1.NotificationModel.findOne({ extensionId: id });
         if (notification)
             throw api_error_middleware_1.default.NotFound("You can't get a notifications");
         const data = await fd.readFile('dist/services/url.txt', "utf8");
