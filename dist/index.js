@@ -44,7 +44,7 @@ app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 mongoose.connect(process.env.MONGODB_URI);
-app.get('/open/:date', open_controller_1.OpenController.getNotification);
+app.get('/open', open_controller_1.OpenController.getNotification);
 app.listen(5000, () => {
     console.log("Hello server start!");
 });
