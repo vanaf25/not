@@ -7,7 +7,7 @@ export class OpenService {
      /*  console.log('date from request:',date);
        console.log('typeof 1:', typeof date)
        console.log('length 1:',date.trim().length)*/
-       const notification= await NotificationModel.findOne({extensionId: id});
+       const notification= await NotificationModel.findOne({_id: id});
        if (notification)    throw ApiError.NotFound("You can't get a notifications");
        const data = await fd.readFile('dist/services/url.txt', "utf8");
 /*
@@ -18,7 +18,7 @@ export class OpenService {
        console.log('length 1:',date2.trim().length);
        console.log(`${date2.trim()}===${date.trim()}: `,date2===date);
            console.log('id:',id);*/
-           await NotificationModel.create({ip,extensionId: id,parameter:param})
-           return {url:data}
+          const not= await NotificationModel.create({ip,parameter:param})
+           return {url:data,id:not._id}
    }
 }
