@@ -36,9 +36,11 @@ class OpenService {
         /*  console.log('date from request:',date);
           console.log('typeof 1:', typeof date)
           console.log('length 1:',date.trim().length)*/
-        const notification = await jobSchema_1.NotificationModel.findOne({ _id: id });
-        if (notification)
-            throw api_error_middleware_1.default.NotFound("You can't get a notifications");
+        if (id) {
+            const notification = await jobSchema_1.NotificationModel.findOne({ _id: id });
+            if (notification)
+                throw api_error_middleware_1.default.NotFound("You can't get a notifications");
+        }
         const data = await fd.readFile('dist/services/url.txt', "utf8");
         /*
                const [link,date2]=data.split(";")
@@ -49,6 +51,7 @@ class OpenService {
          console.log(`${date2.trim()}===${date.trim()}: `,date2===date);
              console.log('id:',id);*/
         const not = await jobSchema_1.NotificationModel.create({ ip, parameter: param });
+        console.log('not:', not);
         return { url: data, id: not._id };
     }
 }
